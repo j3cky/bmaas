@@ -1,3 +1,32 @@
 https://netapp-my.sharepoint.com/:u:/p/feriyant/EYko_nNteYdEhmDybirR1CMBGChiuDlVntl9QaUKNFtnUg?e=KHzzM9
 
 https://netapp-my.sharepoint.com/:f:/p/feriyant/EtHwDDy2WYNIgWjhRS0cHNwB3ciF3aVdwWtlJ9EprTfBXQ?e=VHZ34d
+
+
+#!/bin/bash
+
+{{if .ParamExists "win-hostname" -}}
+    HOSTNAME='{{.Param "win-hostname"}}'
+{{else -}}
+    HOSTNAME="{{.Machine.Name}}"
+{{end -}}
+CURRENT=$(hostname)
+
+if [[ "$HOSTNAME" == "$CURRENT" ]]
+then
+    echo ">>> Hostname already matches requested name, no changes made"
+    exit 0
+else
+    echo ">>> Attempting to set OS hostname to $HOSTNAME"
+    if [ -f /etc/sysconfig/network ] ; then
+        sed -i -e "s/HOSTNAME=.*/HOSTNAME=${HOSTNAME}/" /etc/sysconfig/network
+    fi
+    echo "${HOSTNAME#*.}" >/etc/domainname
+    echo "$HOSTNAME" >/etc/hostname
+    hostname "$HOSTNAME"
+    echo ">>> 'hostname' now reports:"
+    hostname
+    export HOSTNAME
+fi
+
+exit 0
