@@ -19,7 +19,9 @@ $lacpGroupSpec[0].LacpGroupConfig.UplinkNum = 2
 
 $lacpGroupSpec[0].Operation = 'add'
 
-$_this = Get-View -Id 'VmwareDistributedVirtualSwitch-dvs-1194'
+#$_this = Get-View -Id 'VmwareDistributedVirtualSwitch-dvs-1194'
+
+$_this = Get-VDSwitch "DSwitch 1" | Get-View
 
 $_this.UpdateDVSLacpGroupConfig_Task($lacpGroupSpec)
 
