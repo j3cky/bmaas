@@ -1,0 +1,18 @@
+#---------------ReconfigureDvs_Task---------------
+
+$spec = New-Object VMware.Vim.VMwareDVSConfigSpec
+
+$spec.ConfigVersion = '14'
+
+$spec.UplinkPortPolicy = New-Object VMware.Vim.DVSNameArrayUplinkPortPolicy
+
+$spec.UplinkPortPolicy.UplinkPortName = New-Object String[] (2)
+
+$spec.UplinkPortPolicy.UplinkPortName[0] = 'uplink1'
+
+$spec.UplinkPortPolicy.UplinkPortName[1] = 'uplink2'
+
+#$_this = Get-View -Id 'VmwareDistributedVirtualSwitch-dvs-18'
+
+$_this = Get-VDSwitch "DSwitch Storage" | Get-View
+$_this.ReconfigureDvs_Task($spec)
