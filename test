@@ -1,3 +1,5 @@
+Get-Datastore | Where-Object {$_.Name -match "tepri02"} | Select-Object -first 1 | Select -ExpandProperty Name
+
 tenant%5Bname%3D%22".$tenantif[$i]."%22%5D
 
 
