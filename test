@@ -24,3 +24,30 @@ curl --location --request POST 'https://10.150.0.20:5392/v1/initiator_groups/' \
         ]
     }
 }'
+
+
+
+{
+    "data": {
+        "name": "AA00001-B00001-vol1",
+        "perfpolicy_id": "031449e0eb9d23069c00000000000000000000000a",
+        "size": 10240,
+        "limit_iops": 1000,
+        "multi_initiator": true,
+        "description": "AA00001-B00001"
+    }
+}
+
+https://10.150.0.20:5392/v1/volumes/
+
+X-Auth-Token
+
+
+https://10.150.0.20:5392/v1/tokens
+
+{
+    "data":{
+        "username": "portal",
+        "password": "Sementara123!"
+    }
+}
