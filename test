@@ -6,7 +6,7 @@ curl --location --request POST 'https://10.154.0.101/api/session' --header 'Auth
 
 tenant%5Bname%3D%22".$tenantif[$i]."%22%5D
 
-
+0a1449e0eb9d23069c000000000000000000000001
 curl --location --request POST 'https://10.150.0.20:5392/v1/initiator_groups/' \
 --header 'X-Auth-Token: a2aa529d36482fb1c9ea0c2407ebf41a' \
 --header 'Content-Type: application/json' \
