@@ -1,5 +1,7 @@
 Get-Datastore | Where-Object {$_.Name -match "tepri02"} | Select-Object -first 1 | Select -ExpandProperty Name
 
+iqn.1998-01.com.vmware:nc2-esxi02-29ea59e5
+
 curl -X PATCH 'https://aa00001-b00001-tepri02.gioprivate.biznetgio.net/api/appliance/local-accounts/root' -H 'vmware-api-session-id: ae3105ca5868601b364c97bac4d878a4' -H 'Content-type: application/json' -d '{ "password_expires": false }'
 
 curl --location --request POST 'https://10.154.0.101/api/session' --header 'Authorization: Basic cm9vdDo0ZHkwQHBtUg=='
