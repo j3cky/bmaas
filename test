@@ -1,3 +1,5 @@
+vol --create AA00001-B00001-vol2 --perfpolicy "VMware ESX 5" --initiatorgrp AA00001-B00001 --multi_initiator yes --folder AA00001-B00001 --iops_limit 1000 --size 10240
+
 Get-Datastore | Where-Object {$_.Name -match "tepri02"} | Select-Object -first 1 | Select -ExpandProperty Name
 
 iqn.1998-01.com.vmware:nc2-esxi02-29ea59e5
